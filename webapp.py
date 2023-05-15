@@ -48,8 +48,7 @@ def main():
             st.write("INVALID SUBMISSION")
         else:
                 pred = detect(image)
-    st.image(Image.open('cm.png'))
-    st.image(Image.open('roc.png'))
+    st.image([Image.open('cm.png'),Image.open('roc.png')])
     def local_css(file):
         with open(file) as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
