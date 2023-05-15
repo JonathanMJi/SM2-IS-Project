@@ -40,7 +40,7 @@ def main():
     class_btn = st.button("PREDICT")
     
     if mri is not None:
-        image= Image.open(uploaded_file)
+        image= Image.open(mri)
         st.image(image)
 
     if class_btn:
@@ -48,8 +48,8 @@ def main():
             st.write("INVALID SUBMISSION")
         else:
                 pred = detect(image)
-    st.image(Image.open('cm.jpg'))
-    st.image(Image.open('roc.jpg'))
+    st.image(Image.open('cm.png'))
+    st.image(Image.open('roc.png'))
     def local_css(file):
         with open(file) as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
