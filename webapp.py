@@ -15,7 +15,7 @@ def getResult(image):
     image = np.array(image)
     input_img = np.expand_dims(image, axis=0)
     result = 0
-    result = np.argmax(model.predict(input_img))
+    result = model.predict(input_img)
     return result
 
 def get_className(classNo):
