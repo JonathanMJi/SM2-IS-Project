@@ -6,7 +6,7 @@ from PIL import Image
 import tensorflow as tf
 from tensorflow.keras import preprocessing
 import matplotlib.pyplot as plt
-
+from keras.utils.np_utils import normalize
 
 model = tf.keras.models.load_model('model.h5')
 
