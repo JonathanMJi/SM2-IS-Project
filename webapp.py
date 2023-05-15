@@ -11,7 +11,6 @@ from keras.utils.np_utils import normalize
 model = tf.keras.models.load_model('model.h5')
 
 def getResult(image):
-    img=Image.fromarray(image)
     img=img.resize((64,64))
     img = np.array(img)
     img = [img]
@@ -67,9 +66,6 @@ def main():
         if uploaded_file is None:
             st.write("Invalid command, please upload an image")
         else:
-            with st.spinner("Working...."):               
-                #plt.imshow(image)
-                #plt.axis("off")
                 predictions = getResult(image)
                 get_className(predictions)
 
