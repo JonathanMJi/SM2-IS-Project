@@ -7,30 +7,29 @@ from keras.utils.np_utils import normalize
 
 model = tf.keras.models.load_model('model.h5')
 
-def detect(image):
-    img = image
-    img=img.resize((64,64))
-    img = np.array(img)
-    img = [img]
-    img = normalize(img, axis = 1)
-    result =model.predict(img).ravel()
+def detect(mri):
+    mri=mri.resize((64,64))
+    mri = np.array(mri)
+    mri = [mri]
+    mri = normalize(mri, axis = 1)
+    result =model.predict(mri).ravel()
     if result > 0.8:
-        Normal_html="""
+        notumor="""
         <div style="background-color:#5ec391 ;padding:10px">
-        <h3 style="color:white;text-align:center;">Tumor not detected</h3>
+        <h3 style="color:white;text-align:center;">NO TUMOR DETECTED</h3>
         </div>
         """
-        st.markdown(Normal_html, unsafe_allow_html=True)
+        st.markdown(notumor, unsafe_allow_html=True)
     else:
-        Tumor_html="""
+        tumor="""
         <div style="background-color:#F08080;padding:10px">
-        <h2 style="color:white;text-align:center;">Tumor detected</h2>
+        <h2 style="color:white;text-align:center;">TUMOR DETECTED</h2>
         </div>
         """
-        st.markdown(Tumor_html, unsafe_allow_html=True)
+        st.markdown(tumor, unsafe_allow_html=True)
 
 def main():
-    st.title("SM2 IS Project: AI Brain Tumor Detection")
+    st.title("AI Brain Tumor Detection")
     uploaded_file = st.file_uploader("", type=["png","jpg","jpeg"])
     s = f"""
     <style>
@@ -38,7 +37,7 @@ def main():
     <style>
     """
     st.markdown(s, unsafe_allow_html=True)
-    class_btn = st.button("Predict")
+    class_btn = st.button("PREDICT")
     
     if uploaded_file is not None:
         image= Image.open(uploaded_file)
@@ -46,7 +45,7 @@ def main():
 
     if class_btn:
         if uploaded_file is None:
-            st.write("Invalid File Type")
+            st.write("INVALID SUBMISSION")
         else:
                 pred = detect(image)
     def local_css(file_name):
