@@ -31,7 +31,6 @@ def detect(image):
 
 def main():
     st.title("SM2 IS Project: AI Brain Tumor Detection")
-    st.markdown(html_temp, unsafe_allow_html=True)
     uploaded_file = st.file_uploader("", type=["png","jpg","jpeg"])
     s = f"""
     <style>
