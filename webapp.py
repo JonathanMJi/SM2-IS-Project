@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 model = tf.keras.models.load_model('model.h5')
 
 def getResult(image):
-    image = image.resize((64,64))
+    image = image.resize((32,32))
     image = np.array(image)
     input_img = np.expand_dims(image, axis=0)
     result = 0
