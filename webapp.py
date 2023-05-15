@@ -11,6 +11,7 @@ from keras.utils.np_utils import normalize
 model = tf.keras.models.load_model('model.h5')
 
 def getResult(image):
+    img = image
     img=img.resize((64,64))
     img = np.array(img)
     img = [img]
