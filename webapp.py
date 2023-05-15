@@ -11,11 +11,16 @@ import matplotlib.pyplot as plt
 model = tf.keras.models.load_model('model.h5')
 
 def getResult(image):
-    image = image.resize((32,32))
-    image = np.array(image)
-    input_img = np.expand_dims(image, axis=0)
-    result = 0
-    result = model.predict(input_img)
+    img=Image.fromarray(image)
+    img=img.resize((64,64))
+    img = np.array(img)
+    img = [img]
+    img = normalize(img, axis = 1)
+    result =model.predict(img).ravel()
+    if result > 0.8:
+        result = 0
+    else:
+        result = 1
     return result
 
 def get_className(classNo):
