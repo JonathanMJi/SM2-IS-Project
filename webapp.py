@@ -30,26 +30,26 @@ def detect(mri):
 
 def main():
     st.title("AI Brain Tumor Detection")
-    uploaded_file = st.file_uploader("", type=["png","jpg","jpeg"])
-    s = f"""
+    mri = st.file_uploader("", type=["png","jpg","jpeg"])
+    button = f"""
     <style>
     div.stButton > button:first-child {{ background-color: #04AA6D;color: white; padding: 12px 20px;border: none;border-radius: 4px;cursor: pointer; }}
     <style>
     """
-    st.markdown(s, unsafe_allow_html=True)
+    st.markdown(button, unsafe_allow_html=True)
     class_btn = st.button("PREDICT")
     
-    if uploaded_file is not None:
+    if mri is not None:
         image= Image.open(uploaded_file)
         st.image(image)
 
     if class_btn:
-        if uploaded_file is None:
+        if mri is None:
             st.write("INVALID SUBMISSION")
         else:
                 pred = detect(image)
-    def local_css(file_name):
-        with open(file_name) as f:
+    def local_css(file):
+        with open(file) as f:
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     local_css("style/style.css")
 
