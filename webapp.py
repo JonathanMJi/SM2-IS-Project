@@ -1,6 +1,8 @@
 from markdown import markdown
 import streamlit as st
 import numpy as np
+np.object = object
+
 from PIL import Image
 import tensorflow as tf
 from keras.utils.np_utils import normalize
