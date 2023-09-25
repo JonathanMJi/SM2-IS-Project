@@ -11,7 +11,7 @@ model = tf.keras.models.load_model('model.h5')
 
 def detect(mri):
     mri=mri.resize((64,64))
-    mri = np.array_(mri)
+    mri = np.array(mri)
     mri = [mri]
     mri = normalize(mri, axis = 1)
     result =model.predict(mri).ravel()
